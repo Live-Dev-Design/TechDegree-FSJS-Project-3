@@ -113,7 +113,7 @@ payment.addEventListener('change', (e) => {
     }
 });
 
-button.addEventListener('submit', (e) => {
+button.addEventListener('click', (e) => {
     e.preventDefault();
 
     checkValueBtn(inputName, isValidUsername);
