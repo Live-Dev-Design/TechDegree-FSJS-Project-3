@@ -21,6 +21,7 @@ const ccvInput = document.getElementById('cvv');
 const paypal = document.getElementById('paypal');
 const bitcoin = document.getElementById('bitcoin');
 const button = document.querySelector('button');
+const shirt = document.querySelector('.shirt');
 let total = 0; // total cost to start at $0
 
 /****************** 
@@ -30,6 +31,7 @@ function init() {
     // create elements for warnings and total cost
     const nameErrorSpan = document.createElement('span');
     const emailErrorSpan = document.createElement('span');
+    const designErrorSpan = document.createElement('span');
     const creditErrorSpan = document.createElement('span');
     const zipErrorSpan = document.createElement('span');
     const cvvErrorSpan = document.createElement('span');
@@ -59,6 +61,9 @@ function init() {
     payment.selectedIndex = 1; // make the credit card the first visible option on dropwdown payment method
     paypal.style.display = 'none'; // hide the paypal payment option content
     bitcoin.style.display = 'none'; // hide the bitcoin payment option content
+    design.parentElement.parentElement.parentElement.appendChild(designErrorSpan);
+    designErrorSpan.style.display = 'none';
+    designErrorSpan.innerHTML = `<p style="color:#ff3838">**Please choose a shirt size and design</p>`;
 }
 
 // function to insert warning messages after input fields but display to none.

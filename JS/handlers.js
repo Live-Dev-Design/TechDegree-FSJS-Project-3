@@ -71,6 +71,7 @@ design.addEventListener('change', () => {
     if (design.value == "Select Theme") {
         colors.style.display = 'none';
     } else if (design.value == "js puns") { // if design selection is "js puns"
+        shirt.lastElementChild.style.display = 'none'; // remove warning if there is one
         colors.style.display = ''; // show color options
         colorOptions.selectedIndex = 0; // show default text as first option for this design
         colorOptions[0].style.display = ''; // show first 3 options that would match and hide rest
@@ -80,6 +81,7 @@ design.addEventListener('change', () => {
         colorOptions[4].style.display = 'none';
         colorOptions[5].style.display = 'none';  
     } else if (design.value == "heart js") { // if design selection is "heart js"
+        shirt.lastElementChild.style.display = 'none'; // remove warning if there is one
         colors.style.display = ''; // show color options
         colorOptions.selectedIndex = 3; // show default text as first option for this design
         colorOptions[0].style.display = 'none'; // show first 3 options that would match and hide rest
@@ -124,10 +126,14 @@ button.addEventListener('click', (e) => {
     checkValueBtn(creditCrdInput, isValidCard);
     checkValueBtn(zipCodeInput, isValidZip);
     checkValueBtn(ccvInput, isValidCvv);
+
+    
     // if design is on default value
     if (design.value == 'Select Theme') {
-        console.log('no theme');
-    } 
+        shirt.lastElementChild.style.display = ''; // add warning
+    } else {
+        shirt.lastElementChild.style.display = 'none'; // remove warning if there is one
+    }
     // if no total the show message to choose an option
     if (totalDiv.firstElementChild == null) { 
         totalDiv.style.display = ''
