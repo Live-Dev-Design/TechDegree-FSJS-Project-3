@@ -3,6 +3,7 @@
 ==================================== */
 
 @import url('https://fonts.googleapis.com/css?family=Nunito|Roboto+Mono');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
 * {
   box-sizing: border-box;
@@ -16,8 +17,8 @@ button {
 
 body {
   font: 1em/1.5;
-  color: rgba(6, 49, 68, 0.9);
-	background: #CDE0FB;
+  color: #fff;
+	background: #1B2533;
 }
 
 header {
@@ -30,6 +31,10 @@ h1 {
 	margin: 0;
 }
 
+p{
+	color: #fff;
+}
+
 a {
   text-decoration: none;
 }
@@ -40,8 +45,8 @@ a {
 
 form {
 	padding: .875em 1.875em 1.875em;
-	background: #9BBEEF;
-	border: 2px solid rgba(8, 63, 87, 0.6);
+	background: #1B2533;
+	border: 1.5px solid #FF7F50;
 	border-radius: 3px;
 }
 
@@ -62,9 +67,10 @@ button {
 }
 
 legend {
+	font-family: 'Audiowide', cursive;
 	font-weight: bold;
 	padding-top: .5em;
-	border-top: 2px solid rgba(8, 63, 87, 0.6);
+	border-top: 1.5px solid #FF7F50;
 	margin-bottom: 1.125em;
 }
 
@@ -75,7 +81,7 @@ legend {
 }
 
 label {
-	color: #000;
+	color: #fff;
 	display: block;
 	margin-bottom: .5em;
 }
@@ -90,14 +96,14 @@ input {
 	font-weight: 500;
 	padding: .8em;
 	background: #e9f6fb;
-	border: 2px solid rgb(111, 157, 220);
+	border: 2px solid #1B2533;
 	border-radius: 3px;
 	outline: none;
 }
 
 input:focus {
 	background: #fff;
-	border-color: #5e97b0;
+	border-color: #FF7F50;
 	transition: border-color .4s, background-color .4s;
 }
 
@@ -109,16 +115,16 @@ input[type="radio"] {
 button {
 	color: #fff;
 	padding: .55em 1.25em;
-	background: #083f57;
+	background: #30425B;
 	margin: 1.25em 0 .5em;
 	cursor: pointer;
-	border: 2px solid black;
+	/* border: 2px solid black; */
 	border-radius: 4px;
 	transition: all 0.5s;
 }
 
 button:hover {
-	background: #6F9DDC;
+	background: #FF7F50;
 }
 
 input, 
@@ -127,6 +133,10 @@ option {
 	font-family: 'roboto', sans-serif;
 }
 
+span p {
+	margin-top: 0;
+	margin-bottom: .8em;
+}
 /* ================================= 
   Page Styles
 ==================================== */
@@ -186,7 +196,11 @@ option {
 
 @media (min-width: 0) and (max-width: 679px) {
 	header {
-		padding: 2em 0;
+		padding: 2em 0 1em;
+	}
+	img {
+		max-width: 300px;
+		/* margin: 0 auto; */
 	}
 	button {
 		width: 100%;
@@ -195,7 +209,7 @@ option {
 
 @media (min-width: 680px) {
 	header {
-		padding: 4.65em 0 2.5em;
+		padding: 4.65em 0 1.5em;
 	}
 	.col {
 		float: left;
@@ -209,7 +223,10 @@ option {
 	.col-6 {
 		width: 49%;
 	}
-
+	img {
+		max-width: 500px;
+		/* margin: 0 auto; */
+	}
 	label {
 		clear: both;
 	}
