@@ -3,36 +3,37 @@ Treehouse Techdegree:
 FSJS Project 3 - Interactive Form
 ***********************************************/
 
-/****** variables *******/
+/***************** 
+    variables
+ *****************/
 const inputName = document.querySelector('#name');
 const emailInput = document.getElementById('mail');
 const title = document.getElementById('title');
 const design = document.getElementById('design');
 const colors = document.getElementById('shirt-colors');
-const colorOptions = document.getElementById('color');
 const otherJob = document.getElementById('other-title');
-const checkboxes = document.querySelectorAll('.activities label')
 const activities = document.querySelector('.activities');
 const payment = document.getElementById('payment');
-const creditCard = document.getElementById('credit-card');
 const creditCrdInput = document.getElementById('cc-num');
 const zipCodeInput = document.getElementById('zip');
 const ccvInput = document.getElementById('cvv');
 const paypal = document.getElementById('paypal');
 const bitcoin = document.getElementById('bitcoin');
 const button = document.querySelector('button');
-// create elements for warnings and total cost
-const nameErrorSpan = document.createElement('span');
-const emailErrorSpan = document.createElement('span');
-const creditErrorSpan = document.createElement('span');
-const zipErrorSpan = document.createElement('span');
-const cvvErrorSpan = document.createElement('span');
-const OtherErrorSpan = document.createElement('span');
-const totalDiv = document.createElement('div');
 let total = 0; // total cost to start at $0
 
-/****** functions ********/
+/****************** 
+    functions 
+******************/
 function init() {
+    // create elements for warnings and total cost
+    const nameErrorSpan = document.createElement('span');
+    const emailErrorSpan = document.createElement('span');
+    const creditErrorSpan = document.createElement('span');
+    const zipErrorSpan = document.createElement('span');
+    const cvvErrorSpan = document.createElement('span');
+    const OtherErrorSpan = document.createElement('span');
+    const totalDiv = document.createElement('div');
     // focus on first input name field on load
     inputName.focus(); 
     // warning messages below as template literals:
@@ -73,7 +74,8 @@ function isValidUsername(name) {
 }
 // Must be a valid email address
 function isValidEmail(email) {
-  return /^[^@]+@[^@.]+\.[a-z]+$/i.test(email);
+    // regex from https://emailregex.com/
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 // Must be a valid name of upper or lower case letters
 function isValidJob(job) {
@@ -94,30 +96,31 @@ function isValidCvv(digits) {
 
 // use validators to check if input values are correct and if not show warning span message with red input border
 function checkValue(event, valid, input) {
-    
+    // if input is validated true OR input length is 0 then set warning span display to 'none' and assign no border color
     if (valid(event.target.value) || event.target.value.length == 0) {
         input.nextElementSibling.style.display = 'none';
         input.style.borderColor = '';
-    } else {
+    } else { // else span to display and border color to red
         input.nextElementSibling.style.display = '';
         input.style.borderColor = 'red';
     }
 }
-// if input field values are empty then display warning message if button is clicked
+// if input field values are empty then display warning message for button
 function checkValueBtn(input, valid) {
+    // if input is not empty AND is validated true then span warning display to none and no border
     if (input.value !== '' && valid(input.value)) {
         input.nextElementSibling.style.display = 'none';
         input.style.borderColor = '';
-    } else {
+    } else { // else show warning span and color input border red
         input.nextElementSibling.style.display = '';
         input.style.borderColor = 'red';
     }
-
+    // if 'other' job role is not displayed then keep display to none and no border
     if (input.style.display == 'none' && input.id == 'other-title' ) {
         input.nextElementSibling.style.display = 'none';
         input.style.borderColor = '';
     }
 }
 
-/// call functions ///
+////// call functions ///////
 init();
