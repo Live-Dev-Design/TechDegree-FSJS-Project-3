@@ -13,6 +13,7 @@ const design = document.getElementById('design');
 const colors = document.getElementById('shirt-colors');
 const otherJob = document.getElementById('other-title');
 const activities = document.querySelector('.activities');
+const totalDiv = document.createElement('div');
 const payment = document.getElementById('payment');
 const creditCrdInput = document.getElementById('cc-num');
 const zipCodeInput = document.getElementById('zip');
@@ -33,16 +34,16 @@ function init() {
     const zipErrorSpan = document.createElement('span');
     const cvvErrorSpan = document.createElement('span');
     const OtherErrorSpan = document.createElement('span');
-    const totalDiv = document.createElement('div');
+    
     // focus on first input name field on load
     inputName.focus(); 
     // warning messages below as template literals:
-    const inputNameMsg = `<p style="color:#FF7F50">**Please type a REAL name using upper or lower case letters only</p>`;
-    const inputEmailMsg = `<p style="color:#FF7F50">**Please enter a valid email address</p>`;
-    const inputCardMsg = `<p style="color:#FF7F50">**Please enter a valid card number</p>`;
-    const inputZipMsg = `<p style="color:#FF7F50">**Please enter valid zip code</p>`;
-    const inputCvvMsg = `<p style="color:#FF7F50">**Please enter a 3 digit cvv number</p>`;
-    const inputOtherMsg = `<p style="color:#FF7F50">**Please enter a job role</p>`;
+    const inputNameMsg = `<p style="color:#ff3838">**Please type a REAL name using upper or lower case letters only</p>`;
+    const inputEmailMsg = `<p style="color:#ff3838">**Please enter a valid email address</p>`;
+    const inputCardMsg = `<p style="color:#ff3838">**Please enter a valid card number</p>`;
+    const inputZipMsg = `<p style="color:#ff3838">**Please enter valid zip code</p>`;
+    const inputCvvMsg = `<p style="color:#ff3838">**Please enter a 3 digit cvv number</p>`;
+    const inputOtherMsg = `<p style="color:#ff3838">**Please enter a job role</p>`;
     // call functions to insert messages into span divs but display to none
     warnings(inputName, nameErrorSpan, inputNameMsg); // users name
     warnings(emailInput, emailErrorSpan, inputEmailMsg); // email
@@ -122,5 +123,7 @@ function checkValueBtn(input, valid) {
     }
 }
 
-////// call functions ///////
+/*********************
+    call functions 
+**********************/
 init();

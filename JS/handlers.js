@@ -19,8 +19,10 @@ document.addEventListener('keyup', (e) => {
 // checkboxes event listener
 activities.addEventListener('change', (e) => {
     const checkboxes = document.querySelectorAll('.activities label')
+    console.log(e.target);
     // if checkbox is checked
     if (e.target.checked) {
+        e.target.parentElement.className = 'disabled';
         total = total + +e.target.dataset.cost; // total = total + the checkbox cost
         totalDiv.style.display = '';    // show the total amount once first checkbox is checked
 
@@ -33,12 +35,14 @@ activities.addEventListener('change', (e) => {
             // if checkboxes are disabled
             if (checkboxes[i].firstElementChild.disabled == true) {
                     checkboxes[i].style = "text-decoration: line-through"; // create a line through the option
+                    
             }
         }        
     } else if (!e.target.checked && total > 0) { // if checkbox is not checked AND total is greater than 0
         total = total - +e.target.dataset.cost; // let total = total subtract the cost
         for (let i = 0; i < checkboxes.length; i++) {
             checkboxes[i].firstElementChild.disabled = false; // enable all checkboxes
+            e.target.parentElement.className = '';
             checkboxes[i].style = "text-decoration: inherit";    // revert line through text if there is one
         }  
     } 
@@ -127,7 +131,7 @@ button.addEventListener('click', (e) => {
     // if no total the show message to choose an option
     if (totalDiv.firstElementChild == null) { 
         totalDiv.style.display = ''
-        totalDiv.innerHTML = `<p style="color:#FF7F50">**Please choose at least one option</p>`;
+        totalDiv.innerHTML = `<p style="color:#ff3838">**Please choose at least one option</p>`;
     } else {
         totalDiv.innerHTML = ''; // else hide the message
         

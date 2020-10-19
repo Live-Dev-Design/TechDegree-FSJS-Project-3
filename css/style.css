@@ -18,7 +18,7 @@ button {
 body {
   font: 1em/1.5;
   color: #fff;
-	background: #1B2533;
+  background: #001635;
 }
 
 header {
@@ -45,8 +45,8 @@ a {
 
 form {
 	padding: .875em 1.875em 1.875em;
-	background: #1B2533;
-	border: 1.5px solid #FF7F50;
+	background: #001635;
+	border: 1.5px solid #fefefe;
 	border-radius: 3px;
 }
 
@@ -70,7 +70,7 @@ legend {
 	font-family: 'Audiowide', cursive;
 	font-weight: bold;
 	padding-top: .5em;
-	border-top: 1.5px solid #FF7F50;
+	border-top: 1.5px solid #ff9600;
 	margin-bottom: 1.125em;
 }
 
@@ -118,7 +118,6 @@ button {
 	background: #30425B;
 	margin: 1.25em 0 .5em;
 	cursor: pointer;
-	/* border: 2px solid black; */
 	border-radius: 4px;
 	transition: all 0.5s;
 }
@@ -136,6 +135,10 @@ option {
 span p {
 	margin-top: 0;
 	margin-bottom: .8em;
+}
+
+.disabled {
+	color: #ff9600;
 }
 /* ================================= 
   Page Styles
