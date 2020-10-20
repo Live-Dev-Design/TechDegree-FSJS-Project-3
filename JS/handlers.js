@@ -19,10 +19,9 @@ document.addEventListener('keyup', (e) => {
 // checkboxes event listener
 activities.addEventListener('change', (e) => {
     const checkboxes = document.querySelectorAll('.activities label')
-    console.log(e.target);
     // if checkbox is checked
     if (e.target.checked) {
-        e.target.parentElement.className = 'disabled';
+        e.target.parentElement.className = 'checked';
         total = total + +e.target.dataset.cost; // total = total + the checkbox cost
         totalDiv.style.display = '';    // show the total amount once first checkbox is checked
 
@@ -34,8 +33,7 @@ activities.addEventListener('change', (e) => {
             } 
             // if checkboxes are disabled
             if (checkboxes[i].firstElementChild.disabled == true) {
-                    checkboxes[i].style = "text-decoration: line-through"; // create a line through the option
-                    
+                    checkboxes[i].style = "text-decoration: line-through"; // create a line through the option                
             }
         }        
     } else if (!e.target.checked && total > 0) { // if checkbox is not checked AND total is greater than 0
@@ -84,7 +82,7 @@ design.addEventListener('change', () => {
         shirt.lastElementChild.style.display = 'none'; // remove warning if there is one
         colors.style.display = ''; // show color options
         colorOptions.selectedIndex = 3; // show default text as first option for this design
-        colorOptions[0].style.display = 'none'; // show first 3 options that would match and hide rest
+        colorOptions[0].style.display = 'none'; // show last 3 options that would match and hide rest
         colorOptions[1].style.display = 'none';
         colorOptions[2].style.display = 'none';
         colorOptions[3].style.display = '';
@@ -120,27 +118,5 @@ payment.addEventListener('change', (e) => {
 button.addEventListener('click', (e) => {
     e.preventDefault(); // prevent default behaviour when used
     // checking to see if all necessary fields have a valid value
-    checkValueBtn(inputName, isValidUsername);
-    checkValueBtn(emailInput, isValidEmail);
-    checkValueBtn(otherJob, isValidJob);
-    checkValueBtn(creditCrdInput, isValidCard);
-    checkValueBtn(zipCodeInput, isValidZip);
-    checkValueBtn(ccvInput, isValidCvv);
-
-    
-    // if design is on default value
-    if (design.value == 'Select Theme') {
-        shirt.lastElementChild.style.display = ''; // add warning
-    } else {
-        shirt.lastElementChild.style.display = 'none'; // remove warning if there is one
-    }
-    // if no total the show message to choose an option
-    if (totalDiv.firstElementChild == null) { 
-        totalDiv.style.display = ''
-        totalDiv.innerHTML = `<p style="color:#ff3838">**Please choose at least one option</p>`;
-    } else {
-        totalDiv.innerHTML = ''; // else hide the message
-        
-    }
-
+    btnValidator();
 });

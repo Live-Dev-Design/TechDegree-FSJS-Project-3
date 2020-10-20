@@ -1,6 +1,5 @@
 /***********************************************
-Treehouse Techdegree:
-FSJS Project 3 - Interactive Form
+Treehouse Techdegree: FSJS Project 3 - Interactive Form
 ***********************************************/
 
 /***************** 
@@ -36,16 +35,16 @@ function init() {
     const zipErrorSpan = document.createElement('span');
     const cvvErrorSpan = document.createElement('span');
     const OtherErrorSpan = document.createElement('span');
-    
-    // focus on first input name field on load
-    inputName.focus(); 
+        
+    inputName.focus(); // focus on first input name field on load
+
     // warning messages below as template literals:
-    const inputNameMsg = `<p style="color:#ff3838">**Please type a REAL name using upper or lower case letters only</p>`;
+    const inputNameMsg = `<p style="color:#ff3838">**Please enter your name using upper or lower case letters only</p>`;
     const inputEmailMsg = `<p style="color:#ff3838">**Please enter a valid email address</p>`;
     const inputCardMsg = `<p style="color:#ff3838">**Please enter a valid card number</p>`;
     const inputZipMsg = `<p style="color:#ff3838">**Please enter valid zip code</p>`;
     const inputCvvMsg = `<p style="color:#ff3838">**Please enter a 3 digit cvv number</p>`;
-    const inputOtherMsg = `<p style="color:#ff3838">**Please enter a job role</p>`;
+    const inputOtherMsg = `<p style="color:#ff3838">**Please enter your job role using upper or lower case letters</p>`;
     // call functions to insert messages into span divs but display to none
     warnings(inputName, nameErrorSpan, inputNameMsg); // users name
     warnings(emailInput, emailErrorSpan, inputEmailMsg); // email
@@ -53,7 +52,7 @@ function init() {
     warnings(zipCodeInput, zipErrorSpan, inputZipMsg); // zip code
     warnings(ccvInput, cvvErrorSpan, inputCvvMsg); // cvv
     warnings(otherJob, OtherErrorSpan, inputOtherMsg); // Other job role
-
+    // display none, selection index and append elements
     otherJob.style.display = 'none';  // "other" job input field set to display none
     colors.style.display = 'none'; // "color" option for shirts set to display none
     totalDiv.style.display = 'none'; // cost total in checkbox area set to display none
@@ -80,7 +79,7 @@ function isValidUsername(name) {
 }
 // Must be a valid email address
 function isValidEmail(email) {
-    // regex from https://emailregex.com/
+    // regex used from https://emailregex.com/
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 // Must be a valid name of upper or lower case letters
@@ -111,6 +110,7 @@ function checkValue(event, valid, input) {
         input.style.borderColor = 'red';
     }
 }
+
 // if input field values are empty then display warning message for button
 function checkValueBtn(input, valid) {
     // if input is not empty AND is validated true then span warning display to none and no border
@@ -125,6 +125,41 @@ function checkValueBtn(input, valid) {
     if (input.style.display == 'none' && input.id == 'other-title' ) {
         input.nextElementSibling.style.display = 'none';
         input.style.borderColor = '';
+    }
+}
+
+// final submit validator of all fields //
+function btnValidator() {
+    // if all relevant fields are correctly filled in the page will reload
+    if (isValidUsername(inputName.value) == true && isValidEmail(emailInput.value) == true  && total > 0 && design.value !== "Select Theme") {
+            if (payment.value == "credit card" && isValidCard(creditCrdInput.value) && isValidZip(zipCodeInput.value) && isValidCvv(ccvInput.value)) {
+                window.location.reload(); 
+            } else if (payment.value !== "credit card" && payment.value !== "select method") {
+                window.location.reload();
+            }
+    } else { // else validation is run on relevant input fields with warning messages for incorrect inputs
+        checkValueBtn(inputName, isValidUsername);
+        checkValueBtn(emailInput, isValidEmail);
+        checkValueBtn(otherJob, isValidJob);
+        checkValueBtn(creditCrdInput, isValidCard);
+        checkValueBtn(zipCodeInput, isValidZip);
+        checkValueBtn(ccvInput, isValidCvv);
+        // if design is on default value
+        if (design.value == 'Select Theme') {
+            shirt.lastElementChild.style.display = ''; // add warning
+        } else {
+            shirt.lastElementChild.style.display = 'none'; // remove warning if there is one
+        }
+        // if no 'total' cost then show message to choose an option
+        if (totalDiv.firstElementChild == null) {  // if not total div is displayed
+            totalDiv.style.display = '' // display total div
+            totalDiv.innerHTML = `<p style="color:#ff3838">**Please choose at least one option</p>`; // add paragraph warning message
+        } else if (total > 0) { // if 'total' is greater that 0
+            totalDiv.style.display = '' // display the total div
+            totalDiv.innerHTML = `<h3>TOTAL: $${total}</h3>`; // display amount in div using a template literal
+        } else {
+            totalDiv.innerHTML = ''; // else hide the message   
+        }
     }
 }
 
