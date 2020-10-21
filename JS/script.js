@@ -133,9 +133,9 @@ function btnValidator() {
     // if all relevant fields are correctly filled in the page will reload
     if (isValidUsername(inputName.value) && isValidEmail(emailInput.value) && total > 0 && design.value !== "Select Theme") {
             if (payment.value == "credit card" && isValidCard(creditCrdInput.value) && isValidZip(zipCodeInput.value) && isValidCvv(cvvInput.value)) {
-                window.location.reload(); 
+                window.location.reload(); // reload page
             } else if (payment.value !== "credit card" && payment.value !== "select method") {
-                window.location.reload();
+                window.location.reload(); // reload page
             }
     } else { // else validation is run on relevant input fields with warning messages for incorrect inputs
         checkValueBtn(inputName, isValidUsername);
