@@ -11,8 +11,8 @@ document.addEventListener('keyup', (e) => {
         checkValue(e,isValidCard, creditCrdInput);
     } else if (e.target == zipCodeInput) {
         checkValue(e,isValidZip, zipCodeInput);
-    } else if (e.target == ccvInput) {
-        checkValue(e,isValidCvv, ccvInput);
+    } else if (e.target == cvvInput) {
+        checkValue(e,isValidCvv, cvvInput);
     } 
 });
 
@@ -22,7 +22,7 @@ activities.addEventListener('change', (e) => {
     // if checkbox is checked
     if (e.target.checked) {
         e.target.parentElement.className = 'checked';
-        total = total + +e.target.dataset.cost; // total = total + the checkbox cost
+        total = total + parseInt(e.target.dataset.cost); // total = total + the checkbox cost
         totalDiv.style.display = '';    // show the total amount once first checkbox is checked
 
         for (let i = 0; i < checkboxes.length; i++) {
@@ -37,7 +37,7 @@ activities.addEventListener('change', (e) => {
             }
         }        
     } else if (!e.target.checked && total > 0) { // if checkbox is not checked AND total is greater than 0
-        total = total - +e.target.dataset.cost; // let total = total subtract the cost
+        total = total - parseInt(e.target.dataset.cost); // let total = total subtract the cost
         for (let i = 0; i < checkboxes.length; i++) {
             checkboxes[i].firstElementChild.disabled = false; // enable all checkboxes
             e.target.parentElement.className = '';
@@ -58,6 +58,7 @@ title.addEventListener('change', () => {
         otherJob.style.display = '';
         otherJob.focus();
     } else {
+        title.nextElementSibling.nextElementSibling.innerHTML = '';
         otherJob.style.display = 'none';    // else hide the other input field
     }
 });

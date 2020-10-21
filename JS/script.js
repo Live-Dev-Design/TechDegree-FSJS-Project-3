@@ -16,7 +16,7 @@ const totalDiv = document.createElement('div');
 const payment = document.getElementById('payment');
 const creditCrdInput = document.getElementById('cc-num');
 const zipCodeInput = document.getElementById('zip');
-const ccvInput = document.getElementById('cvv');
+const cvvInput = document.getElementById('cvv');
 const paypal = document.getElementById('paypal');
 const bitcoin = document.getElementById('bitcoin');
 const button = document.querySelector('button');
@@ -50,7 +50,7 @@ function init() {
     warnings(emailInput, emailErrorSpan, inputEmailMsg); // email
     warnings(creditCrdInput, creditErrorSpan, inputCardMsg); // credit card
     warnings(zipCodeInput, zipErrorSpan, inputZipMsg); // zip code
-    warnings(ccvInput, cvvErrorSpan, inputCvvMsg); // cvv
+    warnings(cvvInput, cvvErrorSpan, inputCvvMsg); // cvv
     warnings(otherJob, OtherErrorSpan, inputOtherMsg); // Other job role
     // display none, selection index and append elements
     otherJob.style.display = 'none';  // "other" job input field set to display none
@@ -131,8 +131,8 @@ function checkValueBtn(input, valid) {
 // final submit validator of all fields //
 function btnValidator() {
     // if all relevant fields are correctly filled in the page will reload
-    if (isValidUsername(inputName.value) == true && isValidEmail(emailInput.value) == true  && total > 0 && design.value !== "Select Theme") {
-            if (payment.value == "credit card" && isValidCard(creditCrdInput.value) && isValidZip(zipCodeInput.value) && isValidCvv(ccvInput.value)) {
+    if (isValidUsername(inputName.value) && isValidEmail(emailInput.value) && total > 0 && design.value !== "Select Theme") {
+            if (payment.value == "credit card" && isValidCard(creditCrdInput.value) && isValidZip(zipCodeInput.value) && isValidCvv(cvvInput.value)) {
                 window.location.reload(); 
             } else if (payment.value !== "credit card" && payment.value !== "select method") {
                 window.location.reload();
@@ -143,7 +143,7 @@ function btnValidator() {
         checkValueBtn(otherJob, isValidJob);
         checkValueBtn(creditCrdInput, isValidCard);
         checkValueBtn(zipCodeInput, isValidZip);
-        checkValueBtn(ccvInput, isValidCvv);
+        checkValueBtn(cvvInput, isValidCvv);
         // if design is on default value
         if (design.value == 'Select Theme') {
             shirt.lastElementChild.style.display = ''; // add warning
