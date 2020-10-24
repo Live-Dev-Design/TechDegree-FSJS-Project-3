@@ -42,7 +42,7 @@ function init() {
     const inputNameMsg = `<p style="color:#ff3838">**Please enter your name using upper or lower case letters only</p>`;
     const inputEmailMsg = `<p style="color:#ff3838">**Please enter a valid email address</p>`;
     const inputCardMsg = `<p style="color:#ff3838">**Please enter a valid card number</p>`;
-    const inputZipMsg = `<p style="color:#ff3838">**Please enter valid zip code</p>`;
+    const inputZipMsg = `<p style="color:#ff3838">**Please enter valid post code</p>`;
     const inputCvvMsg = `<p style="color:#ff3838">**Please enter a 3 digit cvv number</p>`;
     const inputOtherMsg = `<p style="color:#ff3838">**Please enter your job role using upper or lower case letters</p>`;
     // call functions to insert messages into span divs but display to none
@@ -92,7 +92,7 @@ function isValidCard(card) {
 }
 // Must be a valid zip code of 5 digits
 function isValidZip(zipNo) {
-  return /^\d{5}$/.test(zipNo);  
+  return /^[a-zA-Z0-9\s]{6,7}$/.test(zipNo);  
 }
 // Must be a valid cvv number of 3 digits
 function isValidCvv(digits) {
@@ -156,7 +156,7 @@ function btnValidator() {
             totalDiv.innerHTML = `<p style="color:#ff3838">**Please choose at least one option</p>`; // add paragraph warning message
         } else if (total > 0) { // if 'total' is greater that 0
             totalDiv.style.display = '' // display the total div
-            totalDiv.innerHTML = `<h3>TOTAL: $${total}</h3>`; // display amount in div using a template literal
+            totalDiv.innerHTML = `<h3>TOTAL: £${total}</h3>`; // display amount in div using a template literal
         } else {
             totalDiv.innerHTML = ''; // else hide the message   
         }

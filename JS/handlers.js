@@ -46,7 +46,7 @@ activities.addEventListener('change', (e) => {
     } 
     // if the total is greater than 0
     if (total > 0) {
-        totalDiv.innerHTML = `<h3>TOTAL: $${total}</h3>`; // display amount in div using a template literal
+        totalDiv.innerHTML = `<h3>TOTAL: £${total}</h3>`; // display amount in div using a template literal
     } else {
         totalDiv.innerHTML = ''; // remove div html if total is 0
     }
